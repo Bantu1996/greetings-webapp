@@ -1,0 +1,38 @@
+  <div class="content">
+        <h1>Greetings</h1>
+        <form action="/greetings" method="POST">
+         <div class="control bottomMessage">
+            <label for="greetMessage">Name</label> 
+            <input type="text" name="activeName" value="" placeholder="" class="greetName">
+            <span class="label-body"></span>
+            <span class="theNumber">{{greet.count}}</span>
+            </div>
+            <br>
+
+            <div class="control">
+                <input type="radio" name="greetRadio" class="greetRadio" value="English">
+                <span class="label-body">English</span>
+                <input type="radio" name="greetRadio" class="greetRadio" value="Afrikaans">
+                <span class="label-body">Afrikaans</span>
+                <input type="radio" name="greetRadio" class="greetRadio" value="IsiXhosa">
+                <span class="label-body">IsiXhosa</span>
+            </div>
+        
+    <br>
+        <div class="control">
+        <button class="greetBtn" on type="submit" name="button">Greet Me</button>
+    </div>
+    <div id = "countdown"></div>
+      </form>
+    <br>
+    <form action="/mess" method="GET">
+    <div class="control bottomMessage">
+        <div class="greetMessage">
+            {{greet.name}}
+        </div>
+    </div>
+    </form>
+    
+      
+</div>
+    

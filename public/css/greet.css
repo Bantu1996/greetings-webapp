@@ -1,0 +1,58 @@
+
+h1{
+    font-size: 50px;
+    border-style: solid;
+    border-color: aqua;
+    font-style: italic;
+    display: inline-block;
+
+}
+.theNumber{
+   font-size: 60px; 
+   font-style: oblique;
+color: violet;
+}
+
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    font-style: normal;
+    font-weight: bold;
+  }
+
+.content{
+    margin: 2.5rem;
+}
+
+.greetMessage {
+text-align: justify;
+}
+
+.greetBtn {
+    display: inline-block;
+margin: 1.5rem;
+align-content: center;
+}
+ 
+@media only screen and (min-width: 414px) {  
+  .container {
+    width: 100%;
+    display: flex;
+    max-width:414px;
+  }
+}
+
+@media only screen and (min-width: 414px) { 
+    h1 {
+        font-size: 74px;
+        border-style: solid;
+        border-color: aqua;
+        display: flex;
+        font-style: italic;
+        
+        
+       
+       
+    }
+}

@@ -1,8 +1,14 @@
   <div class="content">
         <h1>Greetings</h1>
+
+       <div class="errorMessage">
+    <h2> {{messages.error}}</h2>
+</div>
+   
         <form action="/greetings" method="POST">
          <div class="control bottomMessage">
             <label for="greetMessage">Name</label> 
+           
             <input type="text" name="activeName" value="" placeholder="" class="greetName">
             <span class="label-body"></span>
             <span class="theNumber">{{greet.count}}</span>
@@ -21,6 +27,7 @@
     <br>
         <div class="control">
         <button class="greetBtn" on type="submit" name="button">Greet Me</button>
+        <a href="/greeted">Greeted Names</a>
     </div>
     <div id = "countdown"></div>
       </form>

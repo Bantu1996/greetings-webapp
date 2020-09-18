@@ -7,6 +7,18 @@ h1{
     display: inline-block;
 
 }
+th{
+  font-size: 50px;
+  border-color: aqua;
+  font-style: italic;
+  display: inline-block;
+}
+.errorMessage{
+  text-align: justify;
+  font-style: italic;
+  font-size: medium;
+  background-color: blueviolet;
+}
 .theNumber{
    font-size: 60px; 
    font-style: oblique;
@@ -15,14 +27,17 @@ color: violet;
 
 .container {
     width: 100%;
+    margin-top: 10em;
     margin-left: auto;
     margin-right: auto;
     font-style: normal;
     font-weight: bold;
+   
   }
 
 .content{
     margin: 2.5rem;
+    
 }
 
 .greetMessage {
@@ -50,9 +65,6 @@ align-content: center;
         border-color: aqua;
         display: flex;
         font-style: italic;
-        
-        
-       
        
     }
 }

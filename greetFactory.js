@@ -5,14 +5,12 @@ module.exports = function GreetWithRespect(saluted) {
     function setName(activeName) {
         if (activeName) {
             if (greetedNames[activeName] === undefined) {
-                greetedNames[activeName] = 1;
+                greetedNames[activeName] = 0;
             }
-            greetedNames[activeName]++;
+            greetedNames[activeName];
         }
 
     }
-
-
 
     function greetingLanguages(selectedLanguage, activeName) {
         setName(activeName)
@@ -44,6 +42,19 @@ module.exports = function GreetWithRespect(saluted) {
         return namesList.length;
     }
 
+    // function recorder(action) {
+    //     let names = [];
+    //         if (action === 'activeName') {
+    //             names = activeName;
+    //         }
+
+    //         greetedNames.push({
+    //             names
+    //         });
+    //     }
+
+
+
     function getName() {
         return greetedNames;
     }
@@ -54,6 +65,7 @@ module.exports = function GreetWithRespect(saluted) {
         greetingLanguages,
         greetCounter,
         regExpression,
+        // recorder,
         getName,
 
     }

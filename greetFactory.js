@@ -10,6 +10,7 @@ module.exports = function GreetWithRespect(pool) {
         let query = await pool.query(`INSERT INTO greeting
      (greeted_name, greet_counter)
       VALUES ($1, $2)`, [activeName, 1]);
+      return query
 
     }
 

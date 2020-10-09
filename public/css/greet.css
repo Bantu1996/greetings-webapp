@@ -2,10 +2,14 @@
 h1{
     font-size: 50px;
     border-style: solid;
-    border-color: aqua;
+    border-color: coral;
     font-style: italic;
     display: inline-block;
+    text-align: center;
 
+}
+body{
+  background-color: cornsilk;
 }
 th{
   font-size: 50px;
@@ -22,21 +26,32 @@ th{
 .theNumber{
    font-size: 60px; 
    font-style: oblique;
-color: violet;
+color: black;
 }
 
 .container {
     width: 100%;
-    margin-top: 10em;
+    margin-top: 5em;
     margin-left: auto;
     margin-right: auto;
     font-style: normal;
     font-weight: bold;
+    text-align: justify;
+    background-color: bisque;
+    border: black;
+    border-style: solid;
+    border-width: 1em;
+    border-radius: 5px;
+    padding: 2em;
+  
    
   }
 
 .content{
-    margin: 2.5rem;
+  width: 100%;
+    /* margin: 2.5rem; */
+    text-align: justify;
+    background-color: burlywood;
     
 }
 
@@ -44,10 +59,47 @@ color: violet;
 text-align: justify;
 }
 
-.greetBtn {
-    display: inline-block;
-margin: 1.5rem;
-align-content: center;
+.homeBtn{
+  background-color:orange;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.homeBtns{
+  background-color:orange;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+ 
+.resetBtn{
+  background-color:orange;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.greetBtn{
+  background-color:orange;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
  
 @media only screen and (min-width: 414px) {  
@@ -55,6 +107,7 @@ align-content: center;
     width: 100%;
     display: flex;
     max-width:414px;
+    
   }
 }
 
@@ -62,7 +115,7 @@ align-content: center;
     h1 {
         font-size: 74px;
         border-style: solid;
-        border-color: aqua;
+        border-color: coral;
         display: flex;
         font-style: italic;
        

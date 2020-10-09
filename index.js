@@ -4,11 +4,29 @@ const flash = require('express-flash');
 const session = require('express-session');
 var bodyParser = require('body-parser')
 var exphbs = require('express-handlebars');
+const pg = require("pg");
+const Pool = pg.Pool;
+
+let useSSL = false;
+let local = process.env.LOCAL || false;
+if (process.env.DATABASE_URL && !local) {
+  useSSL = true;
+}
+
+const connectionString = process.env.DATABASE_URL || 'postgresql://bantu:s0ty@t0b@n2@localhost:5432/greeting';
+
+const pool = new Pool({
+  connectionString,
+  ssl: useSSL
+});
+
+const greetings = GreetWithRespect(pool);
+
 
 
 var app = express();
 
-const greetings = GreetWithRespect();
+
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
@@ -36,16 +54,16 @@ app.get('/addFlash', function (req, res) {
 
 
 
-app.get('/', function (req, res) {
+app.get('/', async function (req, res) {
   res.render('index', {
-    activeName: greetings.greetingLanguages(req.body.greetRadio, req.body.activeName),
+    count: await greetings.greetCounter(),
 
   })
 })
 
 
 
-app.post('/greetings', function (req, res) {
+app.post('/greetings', async function (req, res) {
   var activeNames = req.body.activeName
   var lang = req.body.greetRadio
 
@@ -55,34 +73,56 @@ app.post('/greetings', function (req, res) {
   else if (lang === undefined) {
     req.flash('error', 'Please select language')
   } else {
-    greetings.greetingLanguages(lang, activeNames)
+  var s =  await greetings.greetingLanguages(lang, activeNames)
+    // greetings.insertFun(activeNames)
   }
 
+
   let greet = {
-    name: greetings.greetingLanguages(lang, activeNames),
-    count: greetings.greetCounter()
+    name: s,
+    count: await greetings.greetCounter(),
+    //insertFun:  greetings.insertFun(activeNames)
   }
-  console.log(greetings.greetCounter());
+    ;
   res.render('index', {
-    greet
+    greet,
+
   });
 })
 
 
 
-app.get('/greeted', function (req, res) {
+app.get('/reset', async function (req, res) {
+   await greetings.reset(),
+  res.render('index')
+});
 
-  var list = Object.keys(greetings.getName())
+app.get('/greeted', async function (req, res) {
+
+  var list = await greetings.getList();
+  console.log(list);
 
   res.render('greeted', { greeted: list })
 })
 
+app.get('/index', function (req, res) {
+  res.render('index')
+});
 
 
-app.get('/actions/:activeName', function (req, res) {
-  var activeName = req.params.activeName
-  let greetedNames = greetings.getName(activeName)
-  res.render('actions', { actions: greetedNames })
+app.get('/counter/:activeName', async function (req, res) {
+  let activeName = req.params.activeName;
+  var county = await greetings.nameMessage(activeName);
+  for (const key in county) {
+
+    var element = county[key];
+
+  }
+  console.log(element)
+  var msg = "Awe, " + activeName + " you have been greeted " + element + " times" + "!"
+  res.render('counter', {
+    message: msg
+  })
 })
 
 

@@ -6,8 +6,11 @@
     </tr>
     {{#each greeted}}
     <tr>
-        <td>{{this}}</td>
+        <td><a href="/counter/{{this.greeted_name}}"> {{this.greeted_name}}</a></td>
     </tr>
     {{/each}}
 </table>
+<a href="index">
+    <button class="homeBtn">Home Screen</button>
+</a>
 </div>

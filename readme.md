@@ -1,1 +1,1 @@
-[![Build Status](https://travis-ci.com/Bantu1996/basic-webpage.svg?branch=gh-pages)](https://travis-ci.com/Bantu1996/basic-webpage)
+[![Build Status](https://travis-ci.com/Bantu1996/greetings-webapp.svg?branch=master)](https://travis-ci.com/Bantu1996/greetings-webapp)

@@ -16,7 +16,7 @@ describe('Greetings', async function(){
 
     beforeEach(async function(){
         // clean the tables before each test run
-        await pool.query("delete from greeting;");
+        await pool.query("delete from greeting");
         
     });
     describe("Names entered", async function() {
@@ -57,39 +57,39 @@ describe('Greetings', async function(){
     });
     })
 
-    // describe("radio buttons", async function() {
+    describe("radio buttons", async function() {
 
-    //         it ("should be able to greet any name in IsiXhosa.", async function () {
+            it ("should be able to greet any name in IsiXhosa.", async function () {
 
-    //             let greetThem = GreetWithRespect(pool);  
+                let greetThem = GreetWithRespect(pool);  
                
       
-    //             await greetThem.greetingLanguages("IsiXhosa", "Bantu");
-    //           const respe = await greetThem.greetingLanguages("IsiXhosa", "Bantu")
-    //             assert.equal("Molo, Bantu", respe);
+                await greetThem.greetingLanguages("IsiXhosa", "Bantu");
+              const respe = await greetThem.greetingLanguages("IsiXhosa", "Bantu")
+                assert.equal("Molo, Bantu", respe);
           
-    //           });
-    //           it ("should be able to greet any name in English.", async function () {
+              });
+              it ("should be able to greet any name in English.", async function () {
       
-    //             let greetThem = GreetWithRespect(pool);  
+                let greetThem = GreetWithRespect(pool);  
                
       
-    //             await greetThem.greetingLanguages("English", "Bantu");
-    //           const respe = await greetThem.greetingLanguages("English", "Bantu")
-    //             assert.equal("Hello, Bantu", respe);
+                await greetThem.greetingLanguages("English", "Bantu");
+              const respe = await greetThem.greetingLanguages("English", "Bantu")
+                assert.equal("Hello, Bantu", respe);
           
-    //           });
-    //           it ("should be able to greet any name in Afrikaans.", async function () {
+              });
+              it ("should be able to greet any name in Afrikaans.", async function () {
       
-    //             let greetThem = GreetWithRespect(pool);  
+                let greetThem = GreetWithRespect(pool);  
                
       
-    //             await greetThem.greetingLanguages("Afrikaans", "Bantu");
-    //           const respe = await greetThem.greetingLanguages("Afrikaans", "Bantu")
-    //             assert.equal("Goeie More, Bantu", respe);
+                await greetThem.greetingLanguages("Afrikaans", "Bantu");
+              const respe = await greetThem.greetingLanguages("Afrikaans", "Bantu")
+                assert.equal("Goeie More, Bantu", respe);
           
-    //           }); 
-    //     })
+              }); 
+        })
     
 
         describe("Counter", async function() {

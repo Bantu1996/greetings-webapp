@@ -20,7 +20,7 @@ describe('Greetings', async function(){
         
     });
     describe("Names entered", async function() {
-    it("should be able to enter a name once greet it more than once", async function () {
+    it("should be able to enter a name once and greet it more than once", async function () {
 
 		await pool.query(INSERT_QUERY, ["Snowy", 4]);
 	
@@ -86,7 +86,7 @@ describe('Greetings', async function(){
       
                 await greetThem.greetingLanguages("Afrikaans", "Bantu");
               const respe = await greetThem.greetingLanguages("Afrikaans", "Bantu")
-                assert.equal("Goeie More, Bantu", respe);
+                assert.equal("Halo, Bantu", respe);
           
               }); 
         })

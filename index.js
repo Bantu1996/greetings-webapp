@@ -119,7 +119,7 @@ app.get('/counter/:activeName', async function (req, res) {
 
   }
   console.log(element)
-  var msg = "Awe, " + activeName + " you have been greeted " + element + " times" + "!"
+  var msg = "Awe, " + activeName + " you have been greeted " + element + " time/s" + "!"
   res.render('counter', {
     message: msg
   })

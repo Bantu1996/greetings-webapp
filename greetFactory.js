@@ -44,7 +44,7 @@ module.exports = function GreetWithRespect(pool) {
             return "Hello, " + activeName;
         }
         if (selectedLanguage === "Afrikaans") {
-            return "Goeie More, " + activeName;
+            return "Halo, " + activeName;
         }
         if (selectedLanguage === "IsiXhosa") {
             return "Molo, " + activeName;

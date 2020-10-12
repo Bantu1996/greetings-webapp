@@ -22,11 +22,7 @@ const pool = new Pool({
 
 const greetings = GreetWithRespect(pool);
 
-
-
 var app = express();
-
-
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
@@ -42,17 +38,12 @@ app.use(session({
   saveUninitialized: true
 }));
 
-
 app.use(flash());
-
-
 
 app.get('/addFlash', function (req, res) {
   req.flash('info', 'Flash Message Added');
   res.redirect('/');
 });
-
-
 
 app.get('/', async function (req, res) {
   res.render('index', {
@@ -60,8 +51,6 @@ app.get('/', async function (req, res) {
 
   })
 })
-
-
 
 app.post('/greetings', async function (req, res) {
   var activeNames = req.body.activeName
@@ -73,10 +62,9 @@ app.post('/greetings', async function (req, res) {
   else if (lang === undefined) {
     req.flash('error', 'Please select language')
   } else {
-  var s =  await greetings.greetingLanguages(lang, activeNames)
+    var s = await greetings.greetingLanguages(lang, activeNames)
     // greetings.insertFun(activeNames)
   }
-
 
   let greet = {
     name: s,
@@ -90,11 +78,9 @@ app.post('/greetings', async function (req, res) {
   });
 })
 
-
-
 app.get('/reset', async function (req, res) {
-   await greetings.reset(),
-  res.render('index')
+  await greetings.reset(),
+    res.render('index')
 });
 
 app.get('/greeted', async function (req, res) {
@@ -108,7 +94,6 @@ app.get('/greeted', async function (req, res) {
 app.get('/index', function (req, res) {
   res.render('index')
 });
-
 
 app.get('/counter/:activeName', async function (req, res) {
   let activeName = req.params.activeName;
@@ -124,8 +109,6 @@ app.get('/counter/:activeName', async function (req, res) {
     message: msg
   })
 })
-
-
 
 const PORT = process.env.PORT || 2011;
 app.listen(PORT, function () {

@@ -20,7 +20,7 @@ describe('Greetings',  function(){
         
     });
  
-    describe("Names entered", async function() {
+   
     it("should be able to enter a name once and greet it more than once", async function () {
 
 		await pool.query(INSERT_QUERY, ["Snowy", 4]);
@@ -56,44 +56,40 @@ describe('Greetings',  function(){
 		assert.equal(3, results.rows[0].count);
 		
     });
-    })
+    
+            it ("should be able to greet any name in IsiXhosa.", async function () {
 
-    // describe("radio buttons",  function() {
-
-    //         it ("should be able to greet any name in IsiXhosa.", async function () {
-
-    //             let greetThem = GreetWithRespect(pool);  
+                let greetThem = GreetWithRespect(pool);  
                
       
-    //             await greetThem.greetingLanguages("IsiXhosa", "Bantu");
-    //           const respe = await greetThem.greetingLanguages("IsiXhosa", "Bantu")
-    //             assert.equal("Molo, Bantu", respe);
+                await greetThem.greetingLanguages("IsiXhosa", "Bantu");
+              const respe = await greetThem.greetingLanguages("IsiXhosa", "Bantu")
+                assert.equal("Molo, Bantu", respe);
           
-    //           });
-    //           it ("should be able to greet any name in English.", async function () {
+              });
+              it ("should be able to greet any name in English.", async function () {
       
-    //             let greetThem = GreetWithRespect(pool);  
+                let greetThem = GreetWithRespect(pool);  
                
       
-    //             await greetThem.greetingLanguages("English", "Bantu");
-    //           const respe = await greetThem.greetingLanguages("English", "Bantu")
-    //             assert.equal("Hello, Bantu", respe);
+                await greetThem.greetingLanguages("English", "Bantu");
+              const respe = await greetThem.greetingLanguages("English", "Bantu")
+                assert.equal("Hello, Bantu", respe);
           
-    //           });
-    //           it ("should be able to greet any name in Afrikaans.", async function () {
+              });
+              it ("should be able to greet any name in Afrikaans.", async function () {
       
-    //             let greetThem = GreetWithRespect(pool);  
+                let greetThem = GreetWithRespect(pool);  
                
       
-    //             await greetThem.greetingLanguages("Afrikaans", "Bantu");
-    //           const respe = await greetThem.greetingLanguages("Afrikaans", "Bantu")
-    //             assert.equal("Halo, Bantu", respe);
+                await greetThem.greetingLanguages("Afrikaans", "Bantu");
+              const respe = await greetThem.greetingLanguages("Afrikaans", "Bantu")
+                assert.equal("Halo, Bantu", respe);
           
-    //           }); 
-    //     })
+              }); 
     
 
-        describe("Counter", async function() {
+       
             it("should be able to count a greeted  name", async function () {
         
                 await pool.query(INSERT_QUERY, ["Snowy", 4]);
@@ -129,7 +125,7 @@ describe('Greetings',  function(){
                 assert.equal(3, results.rows[0].count);
                 
             });
-        })
+    
     
     after(function(){
         pool.end();

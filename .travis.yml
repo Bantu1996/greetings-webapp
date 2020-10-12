@@ -1,7 +1,7 @@
 language: node_js
 
 env:
-  - DATABASE_URL=postgresql://bantu:s0ty@t0b@n2@localhost:5432/greeting_test
+  - DATABASE_URL=postgresql://bantu:s0ty@t0b@n2@localhost:5432/greeting
 
 node_js:  
   - "14.13.0"

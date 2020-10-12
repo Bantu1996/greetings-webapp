@@ -7,17 +7,12 @@ var exphbs = require('express-handlebars');
 const pg = require("pg");
 const Pool = pg.Pool;
 
-let useSSL = false;
-let local = process.env.LOCAL || false;
-if (process.env.DATABASE_URL && !local) {
-  useSSL = true;
-}
+
 
 const connectionString = process.env.DATABASE_URL || 'postgresql://bantu:s0ty@t0b@n2@localhost:5432/greeting';
 
 const pool = new Pool({
-  connectionString,
-  ssl: useSSL
+  connectionString
 });
 
 const greetings = GreetWithRespect(pool);

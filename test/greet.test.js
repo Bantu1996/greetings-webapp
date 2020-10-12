@@ -10,7 +10,7 @@ const pool = new Pool({
     connectionString
 });
 
-describe('Greetings', async function(){
+describe('Greetings',  function(){
 
     const INSERT_QUERY = " INSERT INTO greeting(greeted_name, greet_counter) VALUES ($1, $2)";
 
@@ -57,7 +57,7 @@ describe('Greetings', async function(){
     });
     })
 
-    describe("radio buttons", async function() {
+    describe("radio buttons",  function() {
 
             it ("should be able to greet any name in IsiXhosa.", async function () {
 
@@ -134,3 +134,6 @@ describe('Greetings', async function(){
         pool.end();
     })
 });
+
+
+ 

@@ -46,13 +46,18 @@ app.get('/addFlash', function (req, res) {
 });
 
 app.get('/', async function (req, res) {
-  res.render('index', {
-    count: await greetings.greetCounter(),
-
-  })
+  try {
+    res.render('index', {
+      count: await greetings.greetCounter(),
+  
+    })
+  } catch (error) {
+    console.log(error);
+  }
 })
 
 app.post('/greetings', async function (req, res) {
+try {
   var activeNames = req.body.activeName
   var lang = req.body.greetRadio
 
@@ -76,19 +81,33 @@ app.post('/greetings', async function (req, res) {
     greet,
 
   });
+} catch (error) {
+  console.log(error);
+  
+}
 })
 
 app.get('/reset', async function (req, res) {
+ try {
   await greetings.reset(),
-    res.render('index')
+  res.render('index')
+ } catch (error) {
+   console.log(error);
+   
+ }
 });
 
 app.get('/greeted', async function (req, res) {
-
+try {
   var list = await greetings.getList();
   console.log(list);
 
   res.render('greeted', { greeted: list })
+} catch (error) {
+  console.log(error);
+  
+}
+
 })
 
 app.get('/index', function (req, res) {
@@ -96,7 +115,8 @@ app.get('/index', function (req, res) {
 });
 
 app.get('/counter/:activeName', async function (req, res) {
-  let activeName = req.params.activeName;
+  try {
+    let activeName = req.params.activeName;
   var county = await greetings.nameMessage(activeName);
   for (const key in county) {
 
@@ -108,6 +128,10 @@ app.get('/counter/:activeName', async function (req, res) {
   res.render('counter', {
     message: msg
   })
+  } catch (error) {
+    console.log(error);
+    
+  }
 })
 
 const PORT = process.env.PORT || 2011;

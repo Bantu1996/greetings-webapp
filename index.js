@@ -25,7 +25,7 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(express.static('publiccatch'));
+app.use(express.static('public'));
 
 app.use(session({
   secret: "Please enter name!!",

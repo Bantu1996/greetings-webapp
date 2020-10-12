@@ -30,7 +30,7 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(express.static('public'));
+app.use(express.static('publiccatch'));
 
 app.use(session({
   secret: "Please enter name!!",
@@ -78,7 +78,7 @@ try {
   }
     ;
   res.render('index', {
-    greet,
+    greet,greetings
 
   });
 } catch (error) {
@@ -110,7 +110,7 @@ try {
 
 })
 
-app.get('/index', function (req, res) {
+app.get('/index', async function (req, res) {
   res.render('index')
 });
 

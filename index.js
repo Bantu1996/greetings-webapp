@@ -44,7 +44,7 @@ app.get('/', async function (req, res) {
   try {
     res.render('index', {
       count: await greetings.greetCounter(),
-  
+
     })
   } catch (error) {
     console.log(error);
@@ -52,56 +52,57 @@ app.get('/', async function (req, res) {
 })
 
 app.post('/greetings', async function (req, res) {
-try {
-  var activeNames = req.body.activeName
-  var lang = req.body.greetRadio
+  try {
+    var activeNames = req.body.activeName
+    var lang = req.body.greetRadio
+    var count = req.body.theNumber
+    if (activeNames === "") {
+      req.flash('error', 'Please enter name')
+    }
+    else if (lang === undefined) {
+      req.flash('error', 'Please select language')
+    } else {
+      var s = await greetings.greetingLanguages(lang, activeNames)
+      var cow = await greetings.greetCounter(count)
+      // greetings.insertFun(activeNames)
+    }
 
-  if (activeNames === "") {
-    req.flash('error', 'Please enter name')
-  }
-  else if (lang === undefined) {
-    req.flash('error', 'Please select language')
-  } else {
-    var s = await greetings.greetingLanguages(lang, activeNames)
-    // greetings.insertFun(activeNames)
-  }
+    let greet = {
+      name: s,
+      count: await greetings.greetCounter(),
+      //insertFun:  greetings.insertFun(activeNames)
+    }
+      ;
+    res.render('index', {
+      greet, greetings
 
-  let greet = {
-    name: s,
-    count: await greetings.greetCounter(),
-    //insertFun:  greetings.insertFun(activeNames)
-  }
-    ;
-  res.render('index', {
-    greet,greetings
+    });
+  } catch (error) {
+    console.log(error);
 
-  });
-} catch (error) {
-  console.log(error);
-  
-}
+  }
 })
 
 app.get('/reset', async function (req, res) {
- try {
-  await greetings.reset(),
-  res.render('index')
- } catch (error) {
-   console.log(error);
-   
- }
+  try {
+    await greetings.reset(),
+      res.render('index')
+  } catch (error) {
+    console.log(error);
+
+  }
 });
 
 app.get('/greeted', async function (req, res) {
-try {
-  var list = await greetings.getList();
-  console.log(list);
+  try {
+    var list = await greetings.getList();
+    console.log(list);
 
-  res.render('greeted', { greeted: list })
-} catch (error) {
-  console.log(error);
-  
-}
+    res.render('greeted', { greeted: list })
+  } catch (error) {
+    console.log(error);
+
+  }
 
 })
 
@@ -112,20 +113,20 @@ app.get('/index', async function (req, res) {
 app.get('/counter/:activeName', async function (req, res) {
   try {
     let activeName = req.params.activeName;
-  var county = await greetings.nameMessage(activeName);
-  for (const key in county) {
+    var county = await greetings.nameMessage(activeName);
+    for (const key in county) {
 
-    var element = county[key];
+      var element = county[key];
 
-  }
-  console.log(element)
-  var msg = "Awe, " + activeName + " you have been greeted " + element + " time/s" + "!"
-  res.render('counter', {
-    message: msg
-  })
+    }
+    console.log(element)
+    var msg = "Awe, " + activeName + " you have been greeted " + element + " time/s" + "!"
+    res.render('counter', {
+      message: msg
+    })
   } catch (error) {
     console.log(error);
-    
+
   }
 })
 

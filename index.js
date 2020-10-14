@@ -60,7 +60,10 @@ app.post('/greetings', async function (req, res) {
     var activeNames = req.body.activeName
     var lang = req.body.greetRadio
     var count = req.body.theNumber
-    if (activeNames === "") {
+    if (activeNames === "" && lang === undefined) {
+      req.flash('error', 'Please enter name and select a language')
+    }
+    else if (activeNames === "") {
       req.flash('error', 'Please enter name')
     }
     else if (lang === undefined) {

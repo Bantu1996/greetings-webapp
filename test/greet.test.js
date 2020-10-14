@@ -80,6 +80,16 @@ describe('Greetings', function () {
 
   });
 
+  it("should be able to reset the app", async function () {
+    var greetThem = GreetWithRespect(pool);
+    await greetThem.insertFun("Bantu")
+    await greetThem.insertFun("Chuma")
+    await greetThem.insertFun("Sibo")
+    await greetThem.reset();
+
+    assert.equal(0, "")
+  })
+
 
   after(function () {
     pool.end();

@@ -36,22 +36,23 @@ module.exports = function GreetWithRespect(pool) {
 
     async function greetingLanguages(selectedLanguage, activeName) {
         var checking = await checkNames(activeName);
+        var using = activeName.charAt(0).toUpperCase() + activeName.slice(1).toLowerCase()
         console.log(checking.rowCount )
 
         if (checking.rowCount > 0) {
-            await countUpdate(activeName);
+            await countUpdate(using);
         } else {
-            await insertFun(activeName);
+            await insertFun(using);
         }
 
         if (selectedLanguage === "English") {
-            return "Hello, " + activeName;
+            return "Hello, " + using;
         }
         if (selectedLanguage === "Afrikaans") {
-            return "Halo, " + activeName;
+            return "Halo, " + using;
         }
         if (selectedLanguage === "IsiXhosa") {
-            return "Molo, " + activeName;
+            return "Molo, " + using;
         }
 
     }

@@ -1,21 +1,25 @@
 module.exports = function GreetWithRespect(pool) {
 
     async function checkNames(name) {
-        var check = await pool.query('SELECT greeted_name FROM greeting WHERE greeted_name=$1 ', [name]);
+        var using = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
+        var check = await pool.query('SELECT greeted_name FROM greeting WHERE greeted_name=$1 ', [using]);
         return check;
     }
 
 
     async function insertFun(activeName) {
+        // let userGama = activeName
+        var using = activeName.charAt(0).toUpperCase() + activeName.slice(1).toLowerCase()
         let query = await pool.query(`INSERT INTO greeting
      (greeted_name, greet_counter)
-      VALUES ($1, $2)`, [activeName, 1]);
+      VALUES ($1, $2)`, [using, 1]);
       return query
 
     }
 
     async function countUpdate(counting) {
-        var update = await pool.query('UPDATE greeting set greet_counter = greet_counter+1 WHERE greeted_name = $1', [counting]);
+        var using = counting.charAt(0).toUpperCase() + counting.slice(1).toLowerCase()
+        var update = await pool.query('UPDATE greeting set greet_counter = greet_counter+1 WHERE greeted_name = $1', [using]);
         return update;
     }
 

@@ -42,8 +42,12 @@ app.get('/addFlash', function (req, res) {
 
 app.get('/', async function (req, res) {
   try {
-    res.render('index', {
+    let greet = {
       count: await greetings.greetCounter(),
+      //insertFun:  greetings.insertFun(activeNames)
+    }
+    res.render('index', {
+      greet
 
     })
   } catch (error) {
@@ -86,7 +90,7 @@ app.post('/greetings', async function (req, res) {
 app.get('/reset', async function (req, res) {
   try {
     await greetings.reset(),
-      res.render('index')
+      res.redirect('/')
   } catch (error) {
     console.log(error);
 

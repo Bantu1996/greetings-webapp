@@ -58,7 +58,6 @@ describe('Greetings', function () {
   it("should be able to greet any name in IsiXhosa.", async function () {
 
     var greetThem = GreetWithRespect(pool);
-    await greetThem.greetingLanguages("IsiXhosa", "Bantu");
     const respe = await greetThem.greetingLanguages("IsiXhosa", "Bantu")
     assert.equal("Molo, Bantu", respe);
 
@@ -66,7 +65,6 @@ describe('Greetings', function () {
   it("should be able to greet any name in English.", async function () {
 
     var greetThem = GreetWithRespect(pool);
-    await greetThem.greetingLanguages("English", "Bantu");
     const respe = await greetThem.greetingLanguages("English", "Bantu")
     assert.equal("Hello, Bantu", respe);
 
@@ -74,7 +72,6 @@ describe('Greetings', function () {
   it("should be able to greet any name in Afrikaans.", async function () {
 
     var greetThem = GreetWithRespect(pool);
-    await greetThem.greetingLanguages("Afrikaans", "Bantu");
     const respe = await greetThem.greetingLanguages("Afrikaans", "Bantu")
     assert.equal("Halo, Bantu", respe);
 
@@ -86,8 +83,8 @@ describe('Greetings', function () {
     await greetThem.insertFun("Chuma")
     await greetThem.insertFun("Sibo")
     await greetThem.reset();
-
-    assert.equal(0, "")
+    const num = await greetThem.getList();
+    assert.equal(0, num)
   })
 
 

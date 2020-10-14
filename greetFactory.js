@@ -8,7 +8,6 @@ module.exports = function GreetWithRespect(pool) {
 
 
     async function insertFun(activeName) {
-       
         var using = activeName.charAt(0).toUpperCase() + activeName.slice(1).toLowerCase()
         let query = await pool.query(`INSERT INTO greeting
      (greeted_name, greet_counter)
